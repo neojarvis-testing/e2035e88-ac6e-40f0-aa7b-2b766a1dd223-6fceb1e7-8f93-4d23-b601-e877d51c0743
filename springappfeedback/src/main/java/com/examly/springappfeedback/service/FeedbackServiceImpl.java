@@ -28,5 +28,9 @@ public class FeedbackServiceImpl implements FeedbackService{
         return feedbackRepo.findByUserId(userId);
     }
 
+    @Override
+    public void deleteFeedback(int feedBackId){
+        feedbackRepo.deleteById(feedBackId);
+    }
     
 }
