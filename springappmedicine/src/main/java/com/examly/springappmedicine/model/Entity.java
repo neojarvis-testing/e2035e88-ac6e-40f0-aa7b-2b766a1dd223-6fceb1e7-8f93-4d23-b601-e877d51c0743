@@ -1,5 +1,5 @@
 package com.examly.springappmedicine.model;
 
-public class Notification {
-    
+public @interface Entity {
+
 }
