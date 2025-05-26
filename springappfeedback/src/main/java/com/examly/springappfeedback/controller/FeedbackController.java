@@ -37,11 +37,7 @@ public class FeedbackController {
     public ResponseEntity<List<Feedback>> getFeedbackByUserId(@PathVariable int userId){
         return ResponseEntity.ok(feedbackService.getFeedbackByUserId(userId));
     }
-
-    @DeleteMapping("/user/{userId}")
-    public ResponseEntity<List<Feedback>> getFeedbackByUserId(@PathVariable int userId){
-        return ResponseEntity.ok(feedbackService.getFeedbackByUserId(userId));
-    }
+    
     public void deleteFeedback(@PathVariable int feedBackId){
         feedbackService.deleteFeedback(feedBackId);
     }
