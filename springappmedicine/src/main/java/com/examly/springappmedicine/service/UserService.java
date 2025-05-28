@@ -1,4 +1,4 @@
 package com.examly.springappmedicine.service;
-public class UserService {
+public interface UserService {
     
 }

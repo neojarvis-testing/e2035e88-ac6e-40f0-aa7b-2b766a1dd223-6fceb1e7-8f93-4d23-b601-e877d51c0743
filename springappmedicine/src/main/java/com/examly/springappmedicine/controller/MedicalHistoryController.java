@@ -1,6 +1,21 @@
 package com.examly.springappmedicine.controller;
 
-@RequestController
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.examly.springappmedicine.model.MedicalHistory;
+import com.examly.springappmedicine.service.MedicalHistoryService;
+
+@RestController
 @RequestMapping("/api/medical-history")
 public class MedicalHistoryController {
     
@@ -17,9 +32,9 @@ public class MedicalHistoryController {
         return medicalHistoryService.add(mh);
     }
 
-    @GetMapping("/{id}")
-    public MedicalHistory get(@PathVariable int id){
-        return medicalHistoryService.get(id);
+    @GetMapping("/{Id}")
+    public MedicalHistory get(@PathVariable int patientIdd){
+        return medicalHistoryService.getByPatientId(patientId);
     }
 
     @PutMapping("/{id}")

@@ -1,4 +1,10 @@
 package com.examly.springappmedicine.service;
-public class PatientServiceImpl {
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+public class PatientServiceImpl implements PatientService {
+    @Autowired
+    
+    
     
 }
