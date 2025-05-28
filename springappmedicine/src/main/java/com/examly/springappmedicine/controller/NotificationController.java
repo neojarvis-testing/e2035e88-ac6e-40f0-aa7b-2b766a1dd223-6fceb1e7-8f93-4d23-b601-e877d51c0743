@@ -23,17 +23,17 @@ public class NotificationController {
 
     @GetMapping
     public List<Notification> getAll(){
-        return notificationService.getAll();
+        return notificationService.getAllNotifications();
     }
 
     @PostMapping
     public Notification add(@RequestBody Notification notification){
-        return notificationService.add(notification);
+        return notificationService.addNotification(notification);
     }
 
     @PutMapping("/{id}")
     public Notification update(@PathVariable int id, @RequestBody Notification notification){
-        return notificationService.update(id, notification);
+        return notificationService.updateNotification(id, notification);
     }
 
 }

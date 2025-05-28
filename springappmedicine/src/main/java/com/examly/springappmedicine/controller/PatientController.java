@@ -1,6 +1,7 @@
 package com.examly.springappmedicine.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -33,7 +34,7 @@ public class PatientController {
     }
 
     @GetMapping("/{id}")
-    public Patient getPatient(@PathVariable int id){
+    public Optional<Patient> getPatient(@PathVariable int id){
         return patientService.getPatientById(id);
     }
 

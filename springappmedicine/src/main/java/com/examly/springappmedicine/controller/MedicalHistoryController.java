@@ -24,27 +24,27 @@ public class MedicalHistoryController {
 
     @GetMapping
     public List<MedicalHistory> getAll(){
-        return patientService.getAll();
+        return medicalHistoryService.getAllmedicalHistories();
     }
 
     @PostMapping
     public MedicalHistory add(@RequestBody MedicalHistory mh){
-        return medicalHistoryService.add(mh);
+        return medicalHistoryService.addMedicalHistory(mh);
     }
 
     @GetMapping("/{Id}")
-    public MedicalHistory get(@PathVariable int patientIdd){
-        return medicalHistoryService.getByPatientId(patientId);
+    public MedicalHistory get(@PathVariable int patientId){
+        return medicalHistoryService.getMedicalHistoryById(patientId);
     }
 
     @PutMapping("/{id}")
     public MedicalHistory update(@PathVariable int id, @RequestBody MedicalHistory mh){
-        return medicalHistoryService.update(id, mh);
+        return medicalHistoryService.updateMedicalHistory(id, mh);
     }
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable int id){
-        medicalHistoryService.delete(id);
+        medicalHistoryService.deleteMedicalHistory(id);
     }
 
 }

@@ -1,6 +1,7 @@
 package com.examly.springappmedicine.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -24,26 +25,26 @@ public class VitalSignController {
 
     @GetMapping
     public List<VitalSign> getAll(){
-        return vitalSignService.getAll();
+        return vitalSignService.getAllVitalSigns();
     }
 
     @PostMapping
     public VitalSign add(@RequestBody VitalSign vs){
-        return vitalSignService.add(vs);
+        return vitalSignService.addVitalSign(vs);
     }
 
     @GetMapping("/{id}")
-    public VitalSign get(@PathVariable int id){
-        return vitalSignService.get(id);
+    public Optional<VitalSign> get(@PathVariable int id){
+        return vitalSignService.getVitalSignById(id);
     }
 
     @PutMapping("/{id}")
     public VitalSign update(@PathVariable int id, @RequestBody VitalSign vs){
-        return vitalSignService.update(id, vs);
+        return vitalSignService.updateVitalSign(id, vs);
     }
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable int id){
-        vitalSignService.delete(id);
+        vitalSignService.deleteVitalSign(id);
     }
 }
