@@ -2,8 +2,9 @@ package com.examly.springappuser.service;
 
 import java.util.UUID;
 
-import org.apache.hc.core5.http.HttpStatus;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -21,11 +22,20 @@ public class UserServiceImpl implements UserService {
         return userRepository.save(user);
     }
 
-    public String login(String email, String password){
-        Optional<User> user = userRepository.findAll().stream().filter(u -> u.getEmail().equals(email) && u.getPassword().equals(password)).findFirst();
-        if(user.isPresent()){
-            return UUID.randomUUID().toString();
+    public String login(String email, String password) {
+        User tempUser = userRepository.findByEmail(email);
+        if(tempUser != null){
+            if(tempUser.getPassword().equals(password))
+            {
+                return UUID.randomUUID().toString();
+            }
+            else{
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid Credentials");
+            }
+            
+        }else{
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND,"USER not Found");
         }
-        throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid Credentials");
+        
     }
 }
